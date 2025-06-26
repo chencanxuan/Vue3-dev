@@ -27,6 +27,20 @@ export const useMemberStore = defineStore(
   },
   // TODO: 持久化
   {
-    persist: true,
+    // 这方式只适合网页端配置pinia持久化
+    //persist: true,
+
+    // 小程序端的pinia持久化配置
+    persist: {
+      // 调整为兼容多端的API
+      storage: {
+        setItem(key, value) {
+          uni.setStorageSync(key, value) // [!code warning]
+        },
+        getItem(key) {
+          return uni.getStorageSync(key) // [!code warning]
+        },
+      },
+    },
   },
 )

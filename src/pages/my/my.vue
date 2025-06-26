@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useMemberStore } from '@/stores'
+import { useMemberStore } from '@/stores/modules/member'
 
 const memberStore = useMemberStore()
 </script>
